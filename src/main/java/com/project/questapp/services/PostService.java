@@ -28,7 +28,7 @@ public class PostService {
 
     }
 
-    public Post getOnePostId(Long postId) {
+    public Post getOnePostById(Long postId) {
         return postRepository.findById(postId).orElse(null);
 
     }
@@ -38,7 +38,7 @@ public class PostService {
     }
 
     public Post createOnePost(PostCreateRequest newPostRequest) {
-        User user=userService.getOneUser(newPostRequest.getUserId());
+        User user=userService.getOneUserById(newPostRequest.getUserId());
         if (user==null)
             return null;
         Post toSave=new Post();
@@ -59,7 +59,6 @@ public class PostService {
             return toUpdate;
         }
         return null;
-
     }
 
     public void deleteOnePostById(Long postId) {
