@@ -16,12 +16,13 @@ import java.util.stream.Collectors;
 public class PostService {
     private PostRepository postRepository;
     private UserService userService;
+    private LikeService likeService;
 
     public PostService(PostRepository postRepository, UserService userService){
         this.postRepository=postRepository;
         this.userService=userService;
-    }
 
+    }
     public List<PostResponse> getAllPosts(Optional<Long> userId) {
           List<Post> list;
         if (userId.isPresent()){
