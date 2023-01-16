@@ -6,6 +6,8 @@ import com.project.questapp.repository.PostRepository;
 import com.project.questapp.requests.PostCreateRequest;
 import com.project.questapp.requests.PostUpdateRequest;
 import com.project.questapp.responses.PostResponse;
+import com.project.questapp.responses.LikeResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,15 +18,14 @@ import java.util.stream.Collectors;
 public class PostService {
     private PostRepository postRepository;
     private UserService userService;
-    private LikeService likeService;
 
     public PostService(PostRepository postRepository, UserService userService){
         this.postRepository=postRepository;
         this.userService=userService;
-
     }
+
     public List<PostResponse> getAllPosts(Optional<Long> userId) {
-          List<Post> list;
+        List<Post> list;
         if (userId.isPresent()){
             list= postRepository.findByUserId(userId.get());
         }

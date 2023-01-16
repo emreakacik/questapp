@@ -25,16 +25,16 @@ public class CommentService {
     }
 
     public List<Comment> getAllCommentWithParam(Optional<Long> userId, Optional<Long> postId) {
-        if(userId.isPresent() && postId.isPresent()){
-            return commentRepository.findByUserIdAndPostId(userId.get(),postId.get());
-        } else if (userId.isPresent()) {
+        List<Comment> comments;
+        if(userId.isPresent() && postId.isPresent()) {
+            return commentRepository.findByUserIdAndPostId(userId.get(), postId.get());
+        }else if(userId.isPresent()) {
             return commentRepository.findByUserId(userId.get());
-        } else if (postId.isPresent()) {
+        }else if(postId.isPresent()) {
             return commentRepository.findByPostId(postId.get());
-        }
-        else {
+        }else
             return commentRepository.findAll();
-        }
+
     }
 
     public Comment getOneCommentById(Long commentId) {
