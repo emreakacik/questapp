@@ -1,6 +1,5 @@
 package com.project.questapp.responses;
 
-import com.project.questapp.entities.Like;
 import com.project.questapp.entities.Post;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,12 +17,14 @@ public class PostResponse {
 
 
 
+
     public PostResponse(Post entity) {
         this.id = entity.getId();
         this.userId = entity.getUser().getId();
         this.userName = entity.getUser().getUserName();
         this.title = entity.getTitle();
         this.text = entity.getText();
+
 
     }
 

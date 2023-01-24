@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.project.questapp.repository.LikeRepository;
+
 import org.springframework.stereotype.Service;
 
 import com.project.questapp.entities.Like;
@@ -26,6 +27,7 @@ public class LikeService {
 		this.userService = userService;
 		this.postService = postService;
 	}
+
 
 	public List<LikeResponse> getAllLikesWithParam(Optional<Long> userId, Optional<Long> postId) {
 		List<Like> list;

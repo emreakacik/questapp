@@ -1,5 +1,6 @@
 package com.project.questapp.services;
 
+import com.project.questapp.entities.Like;
 import com.project.questapp.entities.Post;
 import com.project.questapp.entities.User;
 import com.project.questapp.repository.PostRepository;
@@ -18,11 +19,17 @@ import java.util.stream.Collectors;
 public class PostService {
     private PostRepository postRepository;
     private UserService userService;
+    private LikeService likeService;
 
     public PostService(PostRepository postRepository, UserService userService){
         this.postRepository=postRepository;
         this.userService=userService;
+
     }
+    //@Autowired
+    //public void setLikeService(LikeService likeService) {
+    //    this.likeService = likeService;   }
+
 
     public List<PostResponse> getAllPosts(Optional<Long> userId) {
         List<Post> list;
@@ -40,9 +47,6 @@ public class PostService {
 
     }
 
-    public Post createOnePost(Post newPost) {
-        return postRepository.save(newPost);
-    }
 
     public Post createOnePost(PostCreateRequest newPostRequest) {
         User user=userService.getOneUserById(newPostRequest.getUserId());
